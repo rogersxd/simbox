@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sexta-feira</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngIf="!tasks.length">
+      <app-no-record></app-no-record>
+    </ion-item>
+
+    <ion-item *ngFor="let task of tasks">
+      <ion-label>{{task.name}}</ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="task.isChecked" (ngModelChange)="changeOption(task.name, task.isChecked)"></ion-checkbox>
+      <ion-button color="danger" (click)="remove(task.name)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal [isOpen]="false" #addFriday>
+    <ng-template>
+      <app-task-form></app-task-form>
+      
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="addFriday.isOpen = false">
+        <ion-fab-button color="danger">
+          <ion-icon name="close"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addFriday.isOpen = true">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
