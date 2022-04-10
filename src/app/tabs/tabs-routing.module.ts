@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren: () => import('../friday/friday.module').then(m => m.FridayPageModule)
       },
       {
+        path: 'saturday',
+        loadChildren: () => import('../saturday/saturday.module').then(m => m.SaturdayPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/monday',
         pathMatch: 'full'
