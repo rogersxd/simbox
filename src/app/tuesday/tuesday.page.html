@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Segunda-feira</ion-title>
+    <ion-title>Terça-feira</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content>
   <ion-list>
     <ion-item *ngIf="!tasks.length">
       <app-no-record></app-no-record>
@@ -19,11 +19,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-modal [isOpen]="false" #addMonday>
+  <ion-modal [isOpen]="false" #addTuesday>
     <ng-template>
       <app-task-form></app-task-form>
       
-      <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="addMonday.isOpen = false">
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="addTuesday.isOpen = false">
         <ion-fab-button color="danger">
           <ion-icon name="close"></ion-icon>
         </ion-fab-button>
@@ -31,7 +31,7 @@
     </ng-template>
   </ion-modal>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addMonday.isOpen = true">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addTuesday.isOpen = true">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

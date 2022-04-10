@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('../monday/monday.module').then(m => m.MondayPageModule)
       },
       {
+        path: 'tuesday',
+        loadChildren: () => import('../tuesday/tuesday.module').then(m => m.TuesdayPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/monday',
         pathMatch: 'full'

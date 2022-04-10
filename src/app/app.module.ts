@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

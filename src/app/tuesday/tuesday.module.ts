@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MondayPageRoutingModule } from './monday-routing.module';
+import { TuesdayPageRoutingModule } from './tuesday-routing.module';
 
-import { MondayPage } from './monday.page';
+import { TuesdayPage } from './tuesday.page';
 import { TaskFormComponent } from '../task-form/task-form.component';
 import { NoRecordComponent } from '../no-record/no-record.component';
 
@@ -15,12 +15,12 @@ import { NoRecordComponent } from '../no-record/no-record.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    MondayPageRoutingModule
+    TuesdayPageRoutingModule
   ],
   declarations: [
-    MondayPage, 
+    TuesdayPage, 
     TaskFormComponent,
     NoRecordComponent
   ]
 })
-export class MondayPageModule {}
+export class TuesdayPageModule {}
