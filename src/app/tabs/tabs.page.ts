@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tabs',
@@ -7,8 +8,33 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {
-    console.log('tabs')
+  constructor(private storage: Storage) {
+    this.storage.create();
   }
 
+  async reloadWeek() {
+    await this.reloadMonday('monday');
+    await this.reloadMonday('tuesday');
+    await this.reloadMonday('wednesday');
+    await this.reloadMonday('thursday');
+    await this.reloadMonday('friday');
+    await this.reloadMonday('saturday');
+    await this.reloadMonday('sunday');
+
+    location.reload();
+  }
+
+  async reloadMonday(day: string) {
+    let tasks = JSON.parse(await this.storage.get(day));
+
+    if (! tasks) {
+      return;
+    }
+
+    tasks.forEach(task => {
+        task.isChecked = false;
+    });
+
+    this.storage.set(day, JSON.stringify(tasks));
+  }
 }
