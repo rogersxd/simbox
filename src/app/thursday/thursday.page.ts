@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewWillEnter } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -7,14 +8,11 @@ import { Storage } from '@ionic/storage';
   templateUrl: './thursday.page.html',
   styleUrls: ['./thursday.page.scss'],
 })
-export class ThursdayPage implements OnInit {
+export class ThursdayPage implements OnInit, ViewWillEnter {
   day: string = 'thursday';
   tasks: Array<String> = [];
 
-  constructor(private storage: Storage) {
-      this.storage.create();
-      this.storage.set('daySelected', this.day);
-   }
+  constructor(private storage: Storage) {}
 
   async ngOnInit() {
     this.tasks = JSON.parse(await this.storage.get(this.day));
@@ -22,6 +20,10 @@ export class ThursdayPage implements OnInit {
     if (! this.tasks) {
       this.tasks = [];
     }
+  }
+
+  async ionViewWillEnter() {
+    await this.storage.set('daySelected', this.day); 
   }
 
   changeOption(taskName: string, isChecked: boolean) {
